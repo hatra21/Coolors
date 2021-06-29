@@ -1,0 +1,295 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 70%;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    color: rgb(51,51,51);
+}
+
+button {
+    font-family: inherit;
+}
+
+path, i, svg {
+    pointer-events: none;
+}
+
+.colors {
+    min-height: 80vh;
+    display: flex;
+    color: rgb(212, 212, 212);
+}
+
+.color {
+    height: 80vh;
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    position: relative;
+    overflow: hidden;
+}
+
+.color h2 {
+    font-size: 2rem;
+    cursor: pointer;
+}
+
+.sliders {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    background: #f7f0f9;
+    /* background: rgb(192, 156, 156); */
+    bottom: 0;
+    padding: 1rem;
+    width: 80%;
+    border-top-right-radius: 1rem;
+    border-top-left-radius: 1rem;
+    opacity: 0;
+    pointer-events: none;
+
+
+    /* Adding an adjustment class */
+    transform: translateY(100px);
+    transition: all .5s ease-in-out;
+
+}
+
+
+/* SlIDER STUFF */
+.sliders.active {
+    opacity: 1;
+    transform: translateY(0px);
+    pointer-events: all;
+}
+
+.sliders button, .close-save, .close-library {
+    position: absolute;
+    right: 0;
+    top: 0;
+    padding: .5rem;
+    border-top-left-radius: 1rem;
+    border-top-right-radius: 1rem;
+    border-bottom-left-radius: 1rem;
+    border: none;
+    background: #737373;
+    color: white;
+    cursor: pointer;
+    font-weight: bold;
+
+}
+
+.close-save:hover, .close-library:hover, .close-adjustment:hover {
+    opacity: .9;
+}
+
+.sliders span {
+    color: rgb(70, 70, 70);
+}
+
+input[type="range"] {
+    appearance: none;
+    margin: 1rem 0;
+    width: 100%;
+    position: relative;
+    border-radius: 1rem;
+    cursor: pointer;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    appearance: none;
+    border: none;
+    background: white;
+    height: .7rem;
+    width: .7rem;
+    border-radius: 50%;
+}
+
+.controls {
+    display: flex;
+    flex-direction: column;
+}
+
+.adjust, .lock {
+    font-size: 2rem;
+    border: none;
+    background: none;
+    cursor: pointer;
+    margin: 2rem 0;
+    transition: all .3s ease-in-out ;
+
+}
+
+.color h2 {
+    transition: all .3s ease-in-out;
+
+}
+
+.adjust:hover, .lock:hover, .color h2:hover {
+    transform: scale(1.3);
+    transition: all .3s ease-in-out;
+} 
+
+
+
+
+/* PANEL SECTION */
+.panel {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 20vh;
+}
+
+.panel button,
+.submit-save {
+    font-size: 1.2rem;
+    margin: 1rem;
+    padding: 1rem 2rem;
+    background: #313363;
+    border: none;
+    color: white;
+    cursor: pointer;
+    border-radius: 1rem;
+    transition: all .3s ease;
+
+}
+
+.panel button:hover, .submit-save:hover {
+    transform: scale(1.1);
+    transition: all .3s ease;
+}
+
+.panel p {
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.library-panel, .generate-panel, .save-panel {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.copy-container, .save-container, .library-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, .5);
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: all .2s ease-in-out;
+}
+
+.copy-container.active,
+.save-container.active,
+.library-container.active {
+    opacity: 1;
+    pointer-events: all;    
+}
+
+.copy-popup, .save-popup, .library-popup {
+    background: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    border-radius: 2rem;
+    transition: transform .5s ease;
+    transform: translateY(-2rem);
+    min-width: 30%;
+    min-height: 30vh;
+}
+
+.copy-popup.active,
+.save-popup.active,
+.library-popup.active {
+    transform: translateY(2rem);
+}
+
+.copy-popup h4, .save-popup h4, .library-popup h4 {
+    font-size: 2rem;
+    padding: 2rem;
+}
+
+.copy-popup h3 {
+    font-size: 2rem;
+}
+
+.save-name {
+    font-size: 1.5rem;
+    padding: 1rem;
+}
+
+.library-popup {
+    min-width: 40%;
+    padding: 1rem;
+    justify-content: flex-start;
+    overflow-y: scroll;
+    max-height: 50vh;
+}
+
+.custom-palette {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 100%;
+    padding: 2rem;
+}
+
+.small-preview {
+    display: flex;
+    flex: 1;
+}
+
+.small-preview div {
+    height: 5rem;
+    flex: 1;
+}
+
+.custom-palette h4 {
+    flex: 1;
+
+}
+
+.pick-palette-btn, .delete-palette-btn {
+    height: 5rem;
+    border: none;
+    padding: 1rem;
+    cursor: pointer;
+    font-size: 1.2rem;
+    background-color: #686868;
+    color: white;
+    margin-left: 1rem;
+    border-radius: 1rem;
+}
+
+.pick-palette-btn:hover {
+    opacity: .9;
+}
+
+
+@media only screen and (max-width: 600px) {
+    .colors{
+        height: 2000px;
+        display: flex;
+        flex-direction: column;  
+    }
+}
